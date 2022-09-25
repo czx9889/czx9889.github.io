@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"czx9889.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="现场施工的个人总结   前言   安装篇   工艺篇   计算篇   4.1. 管道管径流速流量 4.2. 局部水头损失 4.3. 雷诺(Reynolds)数 4.4. 材料力学 4.5. 流体力学  4.5.1. 质量守恒定律 4.5.2. 能量守恒定律    常用的查询表   5.1. 普通单位换算 5.2. 法兰尺寸对照表 5.3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现场施工的个人总结">
+<meta property="og:url" content="https://czx9889.github.io/2022/09/25/%E9%A1%B9%E7%9B%AE%E6%96%BD%E5%B7%A5%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="陈志雄的博客">
+<meta property="og:description" content="现场施工的个人总结   前言   安装篇   工艺篇   计算篇   4.1. 管道管径流速流量 4.2. 局部水头损失 4.3. 雷诺(Reynolds)数 4.4. 材料力学 4.5. 流体力学  4.5.1. 质量守恒定律 4.5.2. 能量守恒定律    常用的查询表   5.1. 普通单位换算 5.2. 法兰尺寸对照表 5.3">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-25T12:51:44.545Z">
+<meta property="article:modified_time" content="2022-09-25T14:27:34.452Z">
+<meta property="article:author" content="NIKO Chen">
+<meta property="article:tag" content="think,">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://czx9889.github.io/2022/09/25/%E9%A1%B9%E7%9B%AE%E6%96%BD%E5%B7%A5%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>现场施工的个人总结 | 陈志雄的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/czx9889" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陈志雄的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://czx9889.github.io/2022/09/25/%E9%A1%B9%E7%9B%AE%E6%96%BD%E5%B7%A5%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/blog.jpg">
+      <meta itemprop="name" content="NIKO Chen">
+      <meta itemprop="description" content="万丈高楼平地起，勿在浮沙筑高台">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈志雄的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          现场施工的个人总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-25 20:51:44 / Modified: 22:27:34" itemprop="dateCreated datePublished" datetime="2022-09-25T20:51:44+08:00">2022-09-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A1%AB%E5%9D%91%E6%8C%87%E5%8D%97/" itemprop="url" rel="index"><span itemprop="name">填坑指南</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="现场施工的个人总结">现场施工的个人总结</h1>
+<ul>
+<li><ol type="1">
+<li><a href="#前言">前言</a></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><a href="#安装篇">安装篇</a></li>
+</ol></li>
+<li><ol start="3" type="1">
+<li><a href="#工艺篇">工艺篇</a></li>
+</ol></li>
+<li><ol start="4" type="1">
+<li><a href="#计算篇">计算篇</a></li>
+</ol>
+<ul>
+<li>4.1. <a href="#管道管径流速流量">管道管径流速流量</a></li>
+<li>4.2. <a href="#局部水头损失">局部水头损失</a></li>
+<li>4.3. <a href="#Reynolds">雷诺(Reynolds)数</a></li>
+<li>4.4. <a href="#材料力学">材料力学</a></li>
+<li>4.5. <a href="#流体力学">流体力学</a>
+<ul>
+<li>4.5.1. <a href="#质量守恒定律">质量守恒定律</a></li>
+<li>4.5.2. <a href="#能量守恒定律">能量守恒定律</a></li>
+</ul></li>
+</ul></li>
+<li><ol start="5" type="1">
+<li><a href="#常用的查询表">常用的查询表</a></li>
+</ol>
+<ul>
+<li>5.1. <a href="#普通单位换算">普通单位换算</a></li>
+<li>5.2. <a href="#法兰尺寸对照表">法兰尺寸对照表</a></li>
+<li>5.3. <a href="#DNODin">DN OD 英寸in</a></li>
+</ul></li>
+<li><ol start="6" type="1">
+<li><a href="#待更新规范速查">待更新规范速查</a></li>
+</ol>
+<ul>
+<li>6.1. <a href="#PPPVDF">PP&amp;PVDF 管路焊接焊缝</a></li>
+</ul></li>
+</ul>
+<span id="more"></span>
+<h2 id="前言">1. <a name='前言'></a>前言</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">每个人都有不愿说的独门绝技，被世人称为经验，学海无涯，寥寥数字竟包含了我的两年工作生涯，</span><br><span class="line">更加感叹每一个知识的来之不易，越学习越了解到知识的匮乏，永远保持一颗学习的心，</span><br><span class="line">从实践中得出经验，理论辅助实践，也许小小的注意点能够避免许多不必要的错误。</span><br><span class="line">此内容仅个人搜索与实践总结，如有错误请及时指正！</span><br><span class="line">Date: 2022-07-01</span><br></pre></td></tr></table></figure>
+<h2 id="安装篇">2. <a name='安装篇'></a>安装篇</h2>
+<pre><code>细节决定成败，从小事做起！</code></pre>
+<ul>
+<li>止回阀的安装 关注止回阀的流向问题和方向问题
+泵出口上下方向的止回阀内部杆需要与泵叶运动方向一致
+左右方向要垂直流体运动方向</li>
+<li>agru管道焊接 需要将两个管口封闭 防止空气对流带走热量影响焊接</li>
+<li>设备安装底部需要增加软垫</li>
+<li>管道焊接前检查管内洁净度，管外的保护度</li>
+<li>pp/pvdf 焊接前需要使用高浓度酒精清洗焊道脱脂</li>
+<li>pvc管道 粘接前需要丙酮清洗脱脂 需要将管道口倒角
+防止管口倒刺将粘接剂刮除 影响粘接质量</li>
+<li>外径/壁厚 = SDR od110/sdr11 = 10 所以壁厚约为10mm</li>
+<li>SDR 11 17 21 33 壁厚由厚递减</li>
+<li>了解 常用的阀门对应的使用的螺栓规格</li>
+<li>GF 变截面流量计注意流量计内部容易装错</li>
+<li>气动阀在竖管安装时将气孔朝下</li>
+<li>T型过滤器 安装最好垂直安装 上方法兰口打开可以清洁内部杂质</li>
+<li>竖直的管路 螺栓的安装 最好螺母在下方</li>
+<li>螺栓长度需要多留出至少2-3个丝</li>
+<li>不锈钢螺栓和不锈钢法兰的连接，螺栓需要缠绕生料带</li>
+<li>不锈钢法兰使用不锈钢螺栓 --（这个待定）</li>
+<li>注意焊缝的质量</li>
+<li>RO高压泵使用pn25法兰和垫片</li>
+<li>气动阀头的气管接头安装前 最好对接头进行吹气处理 查看是否通气
+避免后期调试阀门开关无反应</li>
+<li>气动阀头的调节：缓开缓关(关闭阀门不能太快 容易产生水锤现象)</li>
+<li>罐体的进水排水尤为注意 罐体的排气
+FRP罐体排气不及时会导致罐体压扁</li>
+<li>FRP罐体安装吊装前需要对地面进行清扫 杜绝一切石子颗粒
+底部垫橡胶皮&gt;罐体5cm</li>
+<li>管子的清洁度 对于系统的水质很重要
+一般情况将相对比较脏的管子往系统靠前的设备安装，干净的放置系统后端安装</li>
+<li>ro膜安装：需先将膜壳彻底清洗 洗净后有干净水冲洗湿润，两端端盖打开
+首先确认膜壳型号，安装几只膜，从进水端安装膜，膜分两种 有自锁式的也有
+连接管式的 ，膜的保存方式也有两种
+一种是干膜一种是湿膜（似乎干膜出厂前只进行抽检，湿膜都进行了出厂前的测试，同时也起到保护的作用）膜上有水流箭头指向产水端，浓水环在后依次推入膜壳
+每个膜的编号需要拍照记录保存
+如果是连接管式的用连接管进行连接，自锁式的两个膜旋转即可，膜上有标记
+对齐即为自锁成功，依次推入，浓水端装入止推环，端盖上的垫片取掉（如果短了就不取吧）橡胶圈装好
+两端轻轻敲打安装索紧。</li>
+<li>树脂装填：装填前需对罐体进行水帽安装检查，罐体电火花测试，罐体压力测试
+罐体确认正常后，对罐体清洗一下，准备装树脂的桶 和射流器、钢丝软管
+从合适位置寻找入水口（一般都设计有loading口
+在床前后接入射流器入口，射流出口接入罐体的装载树脂口
+，射流器加载口软管连接至桶中，确认装填量和树脂型号，打开罐体排水即可。</li>
+<li>罐体垂直度：罐体垂直度的测量可以使用线锤&amp;卷尺 将线锤长度标记为1m
+贴在罐体四面，量取顶部垂线到罐体的距离，量取线锤底部到罐体的距离，两值得差值即为偏差，罐体垂直度的要求
+每米小于2mm即合格。</li>
+<li>螺纹规格：NPT PT 。。</li>
+<li>电磁阀：先导式 直通式</li>
+<li>螺栓规格</li>
+<li><hr />
+<h2 id="工艺篇">3. <a name='工艺篇'></a>工艺篇</h2></li>
+<li>阳床在阴树脂床前？：金属离子 结垢</li>
+<li>树脂再生先阳后阴？：防止结垢</li>
+<li>树脂再生总是不合格？：考虑是否有药剂残留存在死角，当然需要考虑的因素有很多，树脂本身的状态、再生药剂的用量等</li>
+<li>ro泵 前加保安过滤器？：高压泵为清水泵 涡轮和外壳非常近
+有颗粒会把泵打坏</li>
+<li>惰性树脂：密度比水小，悬浮于水上方，不具有离子官能团，起到一定的固定和隔离的效果</li>
+<li>2级RO 加NAOH的原因？：
+<ol type="1">
+<li>在pH8.2以上，二氧化碳转化为碳酸根离子，碳酸根离子可以被反渗透脱除，而CO2本身是一种气体，会透过膜进入RO产水，对下游抛光混床等处理负荷</li>
+<li>某些TOC成分在高pH下更容易脱除</li>
+<li>SO2以及硼的脱除率在高pH下更高（特别是高于9）</li>
+</ol></li>
+</ul>
+<hr />
+<h2 id="计算篇">4. <a name='计算篇'></a>计算篇</h2>
+<h3 id="管道管径流速流量">4.1.
+<a name='管道管径流速流量'></a>管道管径流速流量</h3>
+<ul>
+<li><p>液体默认为不可压缩流体，同一管道不同管径的流量Q相同，管径小流速大，管径大流速小
+有支管的情况下，各个支管的流量和等于main管流量</p></li>
+<li><p>流量公式： <span class="math display">\[
+Q=\frac{\upsilon*d^2*\pi}{4}
+\]</span> <span class="math display">\[
+(d=管道直径m,\upsilon=流体平均流速m/s,Q=m^3/h)
+\]</span></p></li>
+<li><p>流速公式： <span class="math display">\[
+\upsilon = \frac{Q}{\pi*d^2}
+\]</span></p></li>
+</ul>
+<h3 id="局部水头损失">4.2. <a name='局部水头损失'></a>局部水头损失</h3>
+<ul>
+<li>局部水头损失系数 如图：</li>
+<li>局部水头损失计算公式：</li>
+</ul>
+<p><span class="math display">\[
+h_j = \zeta \frac{\upsilon^2}{2g}  
+\]</span> <span class="math display">\[(\zeta=
+局部水头损失系数，\upsilon=相应管道断面平均流速，g=9.8,h_j =
+m)\]</span></p>
+<p><span class="math display">\[
+    P = ρgh (ρ=1000kg/m^3,g=9.8,h=m,P=Pa)
+\]</span></p>
+<h3 id="雷诺reynolds数">4.3.
+<a name='Reynolds'></a>雷诺(Reynolds)数</h3>
+<blockquote>
+<p>判断流体的流动状态，流体的流动状态是由流体的黏度和流动力(惯性力)决定的。
+<span class="math display">\[
+Re = \frac{\rho\upsilon D}{\mu} = \frac{UL}{V}
+\]</span> <span class="math display">\[(\rho = 密度 kg/m^3, \upsilon =
+流速 m/s , \mu = 流体的黏度Pa*s)\]</span> <span
+class="math display">\[(U = m/s,V = \frac{\mu}{\rho},L = m米)\]</span>
+当Re值&lt;2000 流体为层流，Re值&gt;4000的流体为紊流(湍流) 2000&lt; Re
+&lt;4000 为从层流到紊流的转换阶段</p>
+</blockquote>
+<h3 id="材料力学">4.4. <a name='材料力学'></a>材料力学</h3>
+<p><span class="math display">\[
+根据载荷的种类可分为正应力和剪应力
+设载荷为W(N),面积为A(mm^2),则正应力\sigma 及 剪应力\tau 可用下式表示：
+\]</span> <span class="math display">\[
+\sigma = \frac{W}{A}(MPa)  
+\]</span> <span class="math display">\[
+\tau = \frac{W}{A}(MPa)
+\]</span></p>
+<blockquote>
+<p>截面垂直方向上的力为正应力，沿着截面方向产生的力为剪应力</p>
+</blockquote>
+<h3 id="流体力学">4.5. <a name='流体力学'></a>流体力学</h3>
+<blockquote>
+<p>流体的连续性定律 1. 质量守恒定律 2. 能量守恒定律</p>
+</blockquote>
+<h4 id="质量守恒定律">4.5.1.
+<a name='质量守恒定律'></a>质量守恒定律</h4>
+<blockquote>
+<p>流体在管路中连续流动时，管路中任意两点单位时间内流过的质量相等
+管路内单位时间内流过的流体质量M可以按下面公式计算：</p>
+</blockquote>
+<p><span class="math display">\[
+M = \rho\upsilon A
+\]</span> <span class="math display">\[(\rho = kg/m^3,\upsilon=m/s,
+A=m^2)\]</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">总结： 因为质量守恒，当一条管路管径变化时，单位时间内流过的质量不变，密度也没有变化所以，流量不变</span><br><span class="line">流速与管路截面直径成反比。</span><br></pre></td></tr></table></figure>
+<h4 id="能量守恒定律">4.5.2.
+<a name='能量守恒定律'></a>能量守恒定律</h4>
+<blockquote>
+<p>流体所具有的能量 e
+包括位能、压力能、动能在没有热量传递时，总能量保持不变。</p>
+</blockquote>
+<hr />
+<h2 id="常用的查询表">5. <a name='常用的查询表'></a>常用的查询表</h2>
+<h3 id="普通单位换算">5.1. <a name='普通单位换算'></a>普通单位换算</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PN10 对应 10公斤</span><br><span class="line">0.1MPA 对应 1公斤</span><br><span class="line">1 bar = 100kpa</span><br><span class="line">1 N = 1Kg*m/s^2 </span><br><span class="line">1pa = 1kg/ms^2</span><br><span class="line">1kg/ms = 1pa * s=1000mpa * s</span><br><span class="line">螺栓4.8 是指螺栓的强度 4.8 8.8</span><br><span class="line">试压一般打系统压的1.5倍</span><br><span class="line">INTERApp 阀 lug对应多孔型 wafer对应对夹型</span><br><span class="line">电导率与电阻率成反比</span><br><span class="line">1 S/m = 10000 μS/cm</span><br><span class="line">1MΩ = 1000000Ω</span><br><span class="line">S/m = 1/Ω·m</span><br><span class="line"></span><br><span class="line">18.25MΩ·cm=18250000Ω·cm=182500Ω·m=(1/182500)S/m=(1/182500)×10000μS/cm≈0.0548μS/cm</span><br><span class="line"></span><br><span class="line">1PPM = 1mg/L</span><br><span class="line">1ppb = 1μg/L</span><br><span class="line">1ppt = 1ng/L</span><br></pre></td></tr></table></figure>
+<h3 id="法兰尺寸对照表">5.2.
+<a name='法兰尺寸对照表'></a>法兰尺寸对照表</h3>
+<h3 id="dn-od-英寸in">5.3. <a name='DNODin'></a>DN OD 英寸in</h3>
+<hr />
+<h2 id="待更新规范速查">6.
+<a name='待更新规范速查'></a>待更新规范速查~~~</h2>
+<blockquote>
+<p>格式规定： 标准：国标编号（标准书对应的编号-page对应的页）</p>
+</blockquote>
+<h3 id="pppvdf-管路焊接焊缝">6.1. <a name='PPPVDF'></a>PP&amp;PVDF
+管路焊接焊缝</h3>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/think/" rel="tag"># think,</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/27/manjaro%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E6%BB%9A%E6%8C%82%E6%95%91%E6%8F%B4%E8%AE%B0%E5%BD%95/" rel="prev" title="manjaro系统更新滚挂救援记录">
+      <i class="fa fa-chevron-left"></i> manjaro系统更新滚挂救援记录
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%B0%E5%9C%BA%E6%96%BD%E5%B7%A5%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">现场施工的个人总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%AF%87"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E8%89%BA%E7%AF%87"><span class="nav-number">1.3.</span> <span class="nav-text">3. 工艺篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%AF%87"><span class="nav-number">1.4.</span> <span class="nav-text">4. 计算篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E7%AE%A1%E5%BE%84%E6%B5%81%E9%80%9F%E6%B5%81%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1.
+管道管径流速流量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E6%B0%B4%E5%A4%B4%E6%8D%9F%E5%A4%B1"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2. 局部水头损失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%B7%E8%AF%BAreynolds%E6%95%B0"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3.
+雷诺(Reynolds)数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%90%E6%96%99%E5%8A%9B%E5%AD%A6"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4. 材料力学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5. 流体力学</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A8%E9%87%8F%E5%AE%88%E6%81%92%E5%AE%9A%E5%BE%8B"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">4.5.1.
+质量守恒定律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%83%BD%E9%87%8F%E5%AE%88%E6%81%92%E5%AE%9A%E5%BE%8B"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">4.5.2.
+能量守恒定律</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E8%A1%A8"><span class="nav-number">1.5.</span> <span class="nav-text">5. 常用的查询表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E5%8D%95%E4%BD%8D%E6%8D%A2%E7%AE%97"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1. 普通单位换算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%95%E5%85%B0%E5%B0%BA%E5%AF%B8%E5%AF%B9%E7%85%A7%E8%A1%A8"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2.
+法兰尺寸对照表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dn-od-%E8%8B%B1%E5%AF%B8in"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3. DN OD 英寸in</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%85%E6%9B%B4%E6%96%B0%E8%A7%84%E8%8C%83%E9%80%9F%E6%9F%A5"><span class="nav-number">1.6.</span> <span class="nav-text">6.
+待更新规范速查~~~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pppvdf-%E7%AE%A1%E8%B7%AF%E7%84%8A%E6%8E%A5%E7%84%8A%E7%BC%9D"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1. PP&amp;PVDF
+管路焊接焊缝</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NIKO Chen"
+      src="/images/blog.jpg">
+  <p class="site-author-name" itemprop="name">NIKO Chen</p>
+  <div class="site-description" itemprop="description">万丈高楼平地起，勿在浮沙筑高台</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/czx9889" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;czx9889" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kickneox@gmail.com" title="E-Mail → mailto:kickneox@gmail.com" rel="noopener" target="_blank"><i class="fab fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52
+      src="//music.163.com/outchain/player?type=2&id=480353&auto=0&height=32">
+      </iframe>
+
+      
+  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+  <div class="widget-wrap">
+      <div id="myCanvasContainer" class="widget tagcloud">
+      <canvas width="220" height="250" id="resCanvas" style="width=100%">
+          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/About-Me%EF%BC%81/" rel="tag">About Me！</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/think/" rel="tag">think</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/think/" rel="tag">think,</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%B7%E5%AE%AB/" rel="tag">迷宫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a><span class="tag-list-count">1</span></li></ul>
+      </canvas>
+      </div>
+  </div>
+  
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+  
+
+
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+    本站总访客数:<span id="busuanzi_value_site_uv"></span>&nbsp;&nbsp;| 
+  </span>
+  <span id="busuanzi_container_site_pv">
+      &nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  </div>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
